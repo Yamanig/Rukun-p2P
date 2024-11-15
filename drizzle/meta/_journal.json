@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1731309152677,
+      "tag": "0000_nifty_daredevil",
+      "breakpoints": true
+    }
+  ]
+}

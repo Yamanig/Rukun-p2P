@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Enhanced gradients for light theme from ibelick.com */
+    --gradient-1: linear-gradient(
+      to bottom right,
+      rgb(255, 255, 255) 0%,
+      rgb(248, 250, 252) 100%
+    );
+    --gradient-2: radial-gradient(
+      circle at top right,
+      rgb(192, 132, 252) 0%,
+      rgb(20, 184, 166) 100%
+    );
+    --gradient-3: linear-gradient(
+      to bottom right,
+      rgb(244, 63, 94) 0%,
+      rgb(248, 113, 113) 100%
+    );
+    --gradient-4: linear-gradient(
+      to bottom right,
+      rgb(249, 168, 212) 0%,
+      rgb(216, 180, 254) 100%
+    );
+    --gradient-5: linear-gradient(
+      to bottom right,
+      rgb(129, 140, 248) 0%,
+      rgb(34, 197, 94) 100%
+    );
+    
+    /* Chart colors for light theme */
+    --chart-1: 221.2 83.2% 53.3%;
+    --chart-2: 162.9 93.5% 48.2%;
+    --chart-3: 291.1 91.1% 62.9%;
+    --chart-4: 47.9 95.8% 53.1%;
+    --chart-5: 26.2 83.3% 53.3%;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    /* Dark theme gradients remain the same */
+    --gradient-1: linear-gradient(to right, #1e1b4b, #1e3a8a);
+    --gradient-2: linear-gradient(to right, #0c4a6e, #1e3a8a);
+    --gradient-3: linear-gradient(to right, #3b0764, #1e3a8a);
+    --gradient-4: linear-gradient(to right, #831843, #3b0764);
+
+    /* Chart colors for dark theme */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Enhanced gradient effects */
+.gradient-border {
+  position: relative;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--gradient-2);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.gradient-border:hover::before {
+  opacity: 0.7;
+}
+
+/* Glassmorphism effects */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-hover {
+  transition: all 0.3s ease;
+}
+
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Gradient text effects */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: var(--gradient-2);
+  background-size: 200% auto;
+  animation: gradient-text 4s ease infinite;
+}
+
+.gradient-text-static {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: var(--gradient-2);
+}
+
+/* Card effects */
+.card-gradient {
+  position: relative;
+  background-image: var(--gradient-1);
+  transition: transform 0.3s ease;
+}
+
+.card-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--gradient-2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.card-gradient:hover {
+  transform: translateY(-2px);
+}
+
+.card-gradient:hover::before {
+  opacity: 0.05;
+}
+
+/* Gradient animations */
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Mesh gradient background */
+.mesh-gradient {
+  background-color: #fff;
+  background-image: radial-gradient(at 40% 20%, hsla(28,100%,74%,0.25) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189,100%,56%,0.25) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355,100%,93%,0.25) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, hsla(340,100%,76%,0.25) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(22,100%,77%,0.25) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(242,100%,70%,0.25) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(343,100%,76%,0.25) 0px, transparent 50%);
+}
+
+.dark .mesh-gradient {
+  background-color: rgb(17, 17, 17);
+  background-image: none;
+}
